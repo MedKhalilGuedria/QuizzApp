@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- login.fxml -->
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+
+<VBox fx:controller="Controllers.LoginController" xmlns:fx="http://javafx.com/fxml" alignment="CENTER" spacing="10">
+    <Label text="Login" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+    <GridPane alignment="CENTER" hgap="10" vgap="5">
+        <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    </GridPane>
+    <Button text="Login" onAction="#handleLoginButtonAction"/>
+</VBox>
