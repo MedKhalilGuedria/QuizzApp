@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- login.fxml -->
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.*?>
@@ -15,4 +13,5 @@
         <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
     </GridPane>
     <Button text="Login" onAction="#handleLoginButtonAction"/>
+    <Button text="Register" onAction="#handleRegisterButtonAction"/>
 </VBox>

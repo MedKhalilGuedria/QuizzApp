@@ -3,11 +3,16 @@ package Controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import util.DatabaseConnector;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,53 +20,66 @@ import java.sql.SQLException;
 
 public class LoginController {
 
-    @FXML
-    private TextField usernameField;
+	  @FXML
+	    private TextField usernameField;
 
-    @FXML
-    private PasswordField passwordField;
+	    @FXML
+	    private PasswordField passwordField;
 
-    @FXML
-    private void handleLoginButtonAction(ActionEvent event) {
-        String username = usernameField.getText();
-        String password = passwordField.getText();
-        String role = authenticate(username, password);
+	    @FXML
+	    private void handleLoginButtonAction(ActionEvent event) {
+	        String username = usernameField.getText();
+	        String password = passwordField.getText();
 
-        if (role != null) {
-            // Navigate to the appropriate view based on role
-            // For simplicity, we'll just display a message for now
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Login Successful");
-            alert.setHeaderText(null);
-            alert.setContentText("Welcome, " + role + "!");
-            alert.showAndWait();
-        } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Login Failed");
-            alert.setHeaderText(null);
-            alert.setContentText("Invalid username or password.");
-            alert.showAndWait();
-        }
-    }
+	        try {
+	            String role = DatabaseConnector.authenticateAndGetRole(username, password);
+	            if (role != null) {
+	                System.out.println("Login successful!");
 
-    private String authenticate(String username, String password) {
-        Connection conn = DatabaseConnector.connect();
-        if (conn != null) {
-            try {
-                String query = "SELECT role FROM users WHERE username=? AND password=?";
-                PreparedStatement statement = conn.prepareStatement(query);
-                statement.setString(1, username);
-                statement.setString(2, password);
-                ResultSet rs = statement.executeQuery();
-                if (rs.next()) {
-                    String role = rs.getString("role");
-                    conn.close();
-                    return role;
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        return null;
-    }
+	                // Redirect based on user role
+	                switch (role) {
+	                    case "Administrator":
+	                        redirectToCoursesInterface();
+	                        break;
+	                    case "Teacher":
+	                        // Redirect to teacher interface
+	                        break;
+	                    case "Student":
+	                        // Redirect to student interface
+	                        break;
+	                    default:
+	                        System.out.println("Unknown user role.");
+	                }
+	            } else {
+	                System.out.println("Invalid username or password.");
+	            }
+	        } catch (SQLException e) {
+	            System.err.println("Error authenticating user: " + e.getMessage());
+	        }
+	    }
+
+	    private void redirectToCoursesInterface() {
+	        try {
+	            Stage stage = (Stage) usernameField.getScene().getWindow();
+	            Parent root = FXMLLoader.load(getClass().getResource("/Views/Courses.fxml"));
+	            Scene scene = new Scene(root);
+	            stage.setScene(scene);
+	            stage.setTitle("Courses Interface");
+	        } catch (IOException e) {
+	            System.err.println("Error loading courses interface: " + e.getMessage());
+	        }
+	    }
+
+	    @FXML
+	    private void handleRegisterButtonAction(ActionEvent event) {
+	        try {
+	            Stage stage = (Stage) usernameField.getScene().getWindow();
+	            Parent root = FXMLLoader.load(getClass().getResource("/Views/registration.fxml"));
+	            Scene scene = new Scene(root);
+	            stage.setScene(scene);
+	            stage.setTitle("Registration");
+	        } catch (IOException e) {
+	            System.err.println("Error loading registration screen: " + e.getMessage());
+	        }
+	    }
 }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="Controllers.CoursesController"
+      alignment="CENTER"
+      spacing="10">
+    <Label text="Courses Management" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+    <HBox spacing="10">
+        <TextField fx:id="newCourseNameField" promptText="Enter new course name"/>
+        <Button text="Add Course" onAction="#handleAddCourse"/>
+        <Button text="Delete Course" onAction="#handleDeleteCourse"/>
+        <Button text="Update Course" onAction="#handleUpdateCourse"/>
+    </HBox>
+    <TableView fx:id="coursesTable" prefWidth="400" onMouseClicked="#handleTableSelection">
+        <columns>
+            <TableColumn text="Course ID" fx:id="courseIdColumn" prefWidth="100"/>
+            <TableColumn text="Course Name" fx:id="courseNameColumn" prefWidth="300"/>
+        </columns>
+    </TableView>
+</VBox>
