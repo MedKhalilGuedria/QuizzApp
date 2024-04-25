@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="Controllers.ClassesController"
+      alignment="CENTER"
+      spacing="10">
+    <Label text="Classes Management" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+    <HBox spacing="10">
+        <TextField fx:id="newClassNameField" promptText="Enter new class name"/>
+        <Button text="Add Class" onAction="#handleAddClass"/>
+        <Button text="Delete Class" onAction="#handleDeleteClass"/>
+        <Button text="Update Class" onAction="#handleUpdateClass"/>
+    </HBox>
+    <TableView fx:id="classesTable" prefWidth="400" onMouseClicked="#handleTableSelection">
+        <columns>
+            <TableColumn text="Class ID" fx:id="classIdColumn" prefWidth="100"/>
+            <TableColumn text="Class Name" fx:id="classNameColumn" prefWidth="300"/>
+        </columns>
+    </TableView>
+</VBox>

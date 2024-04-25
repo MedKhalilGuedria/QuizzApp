@@ -7,8 +7,18 @@ import javafx.beans.property.StringProperty;
 public class Course {
 	private int courseId;
     private String courseName;
+    private int teacherId; // New field for teacher ID
 
-    public Course(int courseId, String courseName) {
+
+    public int getTeacherId() {
+		return teacherId;
+	}
+
+	public void setTeacherId(int teacherId) {
+		this.teacherId = teacherId;
+	}
+
+	public Course(int courseId, String courseName) {
         this.courseId = courseId;
         this.courseName = courseName;
     }

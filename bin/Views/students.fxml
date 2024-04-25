@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.StudentsController">
+    <Label text="Manage Students" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+    <HBox spacing="10">
+        <TextField fx:id="newUsernameField" promptText="Username"/>
+        <TextField fx:id="newPasswordField" promptText="Password"/>
+        <ComboBox fx:id="classComboBox" promptText="Select Class"/>
+        <Button text="Add Student" onAction="#handleAddStudent"/>
+        <Button text="Delete Student" onAction="#handleDeleteStudent"/>
+        <Button text="Update" onAction="#handleUpdateStudent"/>
+    </HBox>
+    <TableView fx:id="studentsTable">
+        <columns>
+            <TableColumn text="ID" fx:id="userIdColumn"/>
+            <TableColumn text="Username" fx:id="usernameColumn"/>
+            <TableColumn text="Class" fx:id="classColumn"/>
+        </columns>
+    </TableView>
+</VBox>

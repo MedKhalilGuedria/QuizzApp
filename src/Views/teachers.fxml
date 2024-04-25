@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.ComboBox?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="Controllers.TeachersController"
+      alignment="CENTER"
+      spacing="10">
+    <Label text="Teachers Management" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+    <HBox spacing="10">
+        <TextField fx:id="newUserNameField" promptText="Enter new teacher name"/>
+        <PasswordField fx:id="newPasswordField" promptText="Enter new password"/>
+        
+         <Button text="Add Teacher" onAction="#handleAddTeacher"/>
+         <Button text="Update Teacher" onAction="#handleUpdateTeacher"/>
+         <Button text="Delete Teacher" onAction="#handleDeleteTeacher"/>
+         
+        
+    </HBox>
+    <TableView fx:id="teachersTable" prefWidth="600" onMouseClicked="#handleTableSelection">
+        <columns>
+            <TableColumn text="User ID" fx:id="userIdColumn" prefWidth="100"/>
+            <TableColumn text="User Name" fx:id="userNameColumn" prefWidth="150"/>
+           
+        </columns>
+    </TableView>
+    <HBox spacing="10">
+        <ComboBox fx:id="courseComboBox" promptText="Select Course"/>
+        <Button text="Assign Course" onAction="#handleAssignCourse"/>
+        <ComboBox fx:id="classComboBox" promptText="Select Class"/>
+        <Button text="Assign Class" onAction="#handleAssignClass"/>
+    </HBox>
+</VBox>

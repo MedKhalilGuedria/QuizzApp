@@ -39,7 +39,7 @@ public class LoginController {
 	                // Redirect based on user role
 	                switch (role) {
 	                    case "Administrator":
-	                        redirectToCoursesInterface();
+	                        redirectToAdminInterface();
 	                        break;
 	                    case "Teacher":
 	                        // Redirect to teacher interface
@@ -58,15 +58,15 @@ public class LoginController {
 	        }
 	    }
 
-	    private void redirectToCoursesInterface() {
+	    private void redirectToAdminInterface() {
 	        try {
 	            Stage stage = (Stage) usernameField.getScene().getWindow();
-	            Parent root = FXMLLoader.load(getClass().getResource("/Views/Courses.fxml"));
+	            Parent root = FXMLLoader.load(getClass().getResource("/Views/admin.fxml"));
 	            Scene scene = new Scene(root);
 	            stage.setScene(scene);
-	            stage.setTitle("Courses Interface");
+	            stage.setTitle("Admin Interface");
 	        } catch (IOException e) {
-	            System.err.println("Error loading courses interface: " + e.getMessage());
+	            System.err.println("Error loading Admin interface: " + e.getMessage());
 	        }
 	    }
 
