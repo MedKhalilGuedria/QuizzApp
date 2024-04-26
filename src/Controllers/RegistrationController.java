@@ -1,12 +1,18 @@
 package Controllers;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import util.DatabaseConnector;
 
 public class RegistrationController {
@@ -19,6 +25,8 @@ public class RegistrationController {
 
     @FXML
     private ChoiceBox<String> roleChoiceBox;
+    @FXML
+    private Button backButton;
     
     public void initialize() {
         // Initialize the items for the ChoiceBox
@@ -47,6 +55,18 @@ public class RegistrationController {
         } catch (SQLException e) {
             System.err.println("Error registering user: " + e.getMessage());
         }
+    }
+    
+    @FXML
+    private void handleBackToLoginButtonAction(ActionEvent event) throws IOException {
+    	 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/Login.fxml"));
+         Parent root = loader.load();
+         
+         // Get the stage from the event source
+         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+         
+         stage.setScene(new Scene(root));
+         stage.show();
     }
 
 }

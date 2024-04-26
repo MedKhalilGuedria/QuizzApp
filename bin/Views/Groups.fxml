@@ -7,18 +7,25 @@
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="Controllers.ClassesController"
       alignment="CENTER"
-      spacing="10">
-    <Label text="Classes Management" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
-    <HBox spacing="10">
-        <TextField fx:id="newClassNameField" promptText="Enter new class name"/>
-        <Button text="Add Class" onAction="#handleAddClass"/>
-        <Button text="Delete Class" onAction="#handleDeleteClass"/>
-        <Button text="Update Class" onAction="#handleUpdateClass"/>
+      spacing="20"
+      style="-fx-background-color: #f4f4f4; -fx-padding: 30;">
+
+    <Label text="Classes Management" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <HBox spacing="20" alignment="CENTER">
+        <TextField fx:id="newClassNameField" promptText="Enter new class name" style="-fx-font-size: 14px; -fx-pref-width: 200px;"/>
+        <Button text="Add Class" onAction="#handleAddClass" style="-fx-font-size: 14px; -fx-background-color: #4CAF50; -fx-text-fill: white; -fx-border-radius: 5px;"/>
+        <Button text="Delete Class" onAction="#handleDeleteClass" style="-fx-font-size: 14px; -fx-background-color: #FF5722; -fx-text-fill: white; -fx-border-radius: 5px;"/>
+        <Button text="Update Class" onAction="#handleUpdateClass" style="-fx-font-size: 14px; -fx-background-color: #2196F3; -fx-text-fill: white; -fx-border-radius: 5px;"/>
     </HBox>
-    <TableView fx:id="classesTable" prefWidth="400" onMouseClicked="#handleTableSelection">
+
+    <TableView fx:id="classesTable" prefWidth="600" style="-fx-font-size: 14px;" onMouseClicked="#handleTableSelection">
         <columns>
-            <TableColumn text="Class ID" fx:id="classIdColumn" prefWidth="100"/>
-            <TableColumn text="Class Name" fx:id="classNameColumn" prefWidth="300"/>
+            <TableColumn text="Class ID" fx:id="classIdColumn" prefWidth="100" style="-fx-alignment: CENTER;"/>
+            <TableColumn text="Class Name" fx:id="classNameColumn" prefWidth="500" style="-fx-alignment: CENTER;"/>
         </columns>
     </TableView>
+             <Button text="Return to Menu" onAction="#returnToMenu" style="-fx-font-size: 14px; -fx-background-color: #2196F3; -fx-text-fill: white; -fx-border-radius: 5px;"/>
+    
+
 </VBox>

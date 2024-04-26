@@ -10,33 +10,36 @@
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="Controllers.ClassesController"
-      spacing="10">
+      spacing="20"
+      style="-fx-background-color: #f9f9f9; -fx-padding: 30;">
 
-    <Label text="Classes Management" />
+    <Label text="Classes Management" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
 
-    <HBox spacing="10">
-        <TextField fx:id="classNameField" promptText="Class Name" />
-        <Button text="Add" onAction="#handleAddClass" />
+    <HBox spacing="10" alignment="CENTER">
+        <TextField fx:id="classNameField" promptText="Class Name" style="-fx-font-size: 14px; -fx-pref-width: 200px;"/>
+        <Button text="Add" onAction="#handleAddClass" style="-fx-font-size: 14px; -fx-background-color: #4CAF50; -fx-text-fill: white; -fx-border-radius: 5px;"/>
     </HBox>
 
-    <TableView fx:id="classesTable">
+    <TableView fx:id="classesTable" style="-fx-font-size: 14px;">
         <columns>
-            <TableColumn text="ID" prefWidth="50">
+            <TableColumn text="ID" prefWidth="50" style="-fx-alignment: CENTER;">
                 <cellValueFactory>
                     <javafx.scene.control.cell.PropertyValueFactory property="classId" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn text="Name" prefWidth="150">
+            <TableColumn text="Name" prefWidth="150" style="-fx-alignment: CENTER;">
                 <cellValueFactory>
                     <javafx.scene.control.cell.PropertyValueFactory property="className" />
                 </cellValueFactory>
             </TableColumn>
         </columns>
     </TableView>
+    
 
-    <HBox spacing="10">
-        <Button text="Update" onAction="#handleUpdateClass" />
-        <Button text="Delete" onAction="#handleDeleteClass" />
+    <HBox spacing="10" alignment="CENTER">
+    
+        <Button text="Update" onAction="#handleUpdateClass" style="-fx-font-size: 14px; -fx-background-color: #2196F3; -fx-text-fill: white; -fx-border-radius: 5px;"/>
+        <Button text="Delete" onAction="#handleDeleteClass" style="-fx-font-size: 14px; -fx-background-color: #FF5722; -fx-text-fill: white; -fx-border-radius: 5px;"/>
     </HBox>
 
 </VBox>

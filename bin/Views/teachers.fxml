@@ -8,29 +8,33 @@
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="Controllers.TeachersController"
       alignment="CENTER"
-      spacing="10">
-    <Label text="Teachers Management" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
-    <HBox spacing="10">
-        <TextField fx:id="newUserNameField" promptText="Enter new teacher name"/>
-        <PasswordField fx:id="newPasswordField" promptText="Enter new password"/>
-        
-         <Button text="Add Teacher" onAction="#handleAddTeacher"/>
-         <Button text="Update Teacher" onAction="#handleUpdateTeacher"/>
-         <Button text="Delete Teacher" onAction="#handleDeleteTeacher"/>
-         
-        
+      spacing="20"
+      style="-fx-background-color: #f4f4f4; -fx-padding: 30;">
+
+    <Label text="Teachers Management" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <HBox spacing="20" alignment="CENTER">
+        <TextField fx:id="newUserNameField" promptText="Enter new teacher name" style="-fx-font-size: 14px;"/>
+        <PasswordField fx:id="newPasswordField" promptText="Enter new password" style="-fx-font-size: 14px;"/>
+        <Button text="Add Teacher" onAction="#handleAddTeacher" style="-fx-font-size: 14px; -fx-background-color: #4CAF50; -fx-text-fill: white; -fx-border-radius: 5px;"/>
+        <Button text="Update Teacher" onAction="#handleUpdateTeacher" style="-fx-font-size: 14px; -fx-background-color: #2196F3; -fx-text-fill: white; -fx-border-radius: 5px;"/>
+        <Button text="Delete Teacher" onAction="#handleDeleteTeacher" style="-fx-font-size: 14px; -fx-background-color: #FF5722; -fx-text-fill: white; -fx-border-radius: 5px;"/>
     </HBox>
-    <TableView fx:id="teachersTable" prefWidth="600" onMouseClicked="#handleTableSelection">
+
+    <TableView fx:id="teachersTable" prefWidth="600" style="-fx-font-size: 14px;" onMouseClicked="#handleTableSelection">
         <columns>
-            <TableColumn text="User ID" fx:id="userIdColumn" prefWidth="100"/>
-            <TableColumn text="User Name" fx:id="userNameColumn" prefWidth="150"/>
-           
+            <TableColumn text="User ID" fx:id="userIdColumn" prefWidth="100" style="-fx-alignment: CENTER;"/>
+            <TableColumn text="User Name" fx:id="userNameColumn" prefWidth="200" style="-fx-alignment: CENTER;"/>
         </columns>
     </TableView>
-    <HBox spacing="10">
-        <ComboBox fx:id="courseComboBox" promptText="Select Course"/>
-        <Button text="Assign Course" onAction="#handleAssignCourse"/>
-        <ComboBox fx:id="classComboBox" promptText="Select Class"/>
-        <Button text="Assign Class" onAction="#handleAssignClass"/>
+
+    <HBox spacing="20" alignment="CENTER">
+        <ComboBox fx:id="courseComboBox" promptText="Select Course" style="-fx-font-size: 14px;"/>
+        <Button text="Assign Course" onAction="#handleAssignCourse" style="-fx-font-size: 14px; -fx-background-color: #4CAF50; -fx-text-fill: white; -fx-border-radius: 5px;"/>
+        <ComboBox fx:id="classComboBox" promptText="Select Class" style="-fx-font-size: 14px;"/>
+        <Button text="Assign Class" onAction="#handleAssignClass" style="-fx-font-size: 14px; -fx-background-color: #2196F3; -fx-text-fill: white; -fx-border-radius: 5px;"/>
+         <Button text="Return to Menu" onAction="#returnToMenu" style="-fx-font-size: 14px; -fx-background-color: #2196F3; -fx-text-fill: white; -fx-border-radius: 5px;"/>
+        
     </HBox>
+
 </VBox>

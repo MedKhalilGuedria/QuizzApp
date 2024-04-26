@@ -6,15 +6,24 @@
 <?import java.lang.String?>
 
 
-<VBox fx:controller="Controllers.RegistrationController" xmlns:fx="http://javafx.com/fxml" alignment="CENTER" spacing="10">
-    <Label text="Registration" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
-    <GridPane alignment="CENTER" hgap="10" vgap="5">
-        <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-        <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-        <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-        <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-        <Label text="Role:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-        <ChoiceBox fx:id="roleChoiceBox" GridPane.columnIndex="1" GridPane.rowIndex="2">
+<VBox fx:controller="Controllers.RegistrationController" xmlns:fx="http://javafx.com/fxml" alignment="CENTER" spacing="20" style="-fx-background-color: #f0f0f0; -fx-padding: 30;">
+    <Label text="Registration" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+    <GridPane alignment="CENTER" hgap="10" vgap="10">
+        <columnConstraints>
+            <ColumnConstraints hgrow="NEVER" />
+            <ColumnConstraints hgrow="SOMETIMES" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints vgrow="NEVER" />
+            <RowConstraints vgrow="NEVER" />
+            <RowConstraints vgrow="NEVER" />
+        </rowConstraints>
+        <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-size: 14px;"/>
+        <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="0" style="-fx-font-size: 14px;"/>
+        <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-size: 14px;"/>
+        <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1" style="-fx-font-size: 14px;"/>
+        <Label text="Role:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-size: 14px;"/>
+        <ChoiceBox fx:id="roleChoiceBox" GridPane.columnIndex="1" GridPane.rowIndex="2" style="-fx-font-size: 14px;">
             <items>
                 <fx:define>
                     <String fx:value="Administrator"/>
@@ -28,5 +37,7 @@
             </items>
         </ChoiceBox>
     </GridPane>
-    <Button text="Register" onAction="#handleRegistrationButtonAction"/>
+    <Button text="Register" onAction="#handleRegistrationButtonAction" style="-fx-font-size: 14px; -fx-padding: 8px 20px; -fx-background-color: #4CAF50; -fx-text-fill: white; -fx-border-radius: 5px;"/>
+    <Button text="Back to Login" onAction="#handleBackToLoginButtonAction" style="-fx-font-size: 14px; -fx-padding: 8px 20px; -fx-background-color: #2196F3; -fx-text-fill: white; -fx-border-radius: 5px;"/>
+    
 </VBox>

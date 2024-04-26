@@ -3,21 +3,28 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.StudentsController">
-    <Label text="Manage Students" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
-    <HBox spacing="10">
-        <TextField fx:id="newUsernameField" promptText="Username"/>
-        <TextField fx:id="newPasswordField" promptText="Password"/>
-        <ComboBox fx:id="classComboBox" promptText="Select Class"/>
-        <Button text="Add Student" onAction="#handleAddStudent"/>
-        <Button text="Delete Student" onAction="#handleDeleteStudent"/>
-        <Button text="Update" onAction="#handleUpdateStudent"/>
+<VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.StudentsController" style="-fx-background-color: #f4f4f4; -fx-padding: 30;">
+
+    <Label text="Manage Students" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <HBox spacing="20" alignment="CENTER">
+        <TextField fx:id="newUsernameField" promptText="Username" style="-fx-font-size: 14px;"/>
+        <TextField fx:id="newPasswordField" promptText="Password" style="-fx-font-size: 14px;"/>
+        <ComboBox fx:id="classComboBox" promptText="Select Class" style="-fx-font-size: 14px;"/>
+        <Button text="Add Student" onAction="#handleAddStudent" style="-fx-font-size: 14px; -fx-background-color: #4CAF50; -fx-text-fill: white; -fx-border-radius: 5px;"/>
+        <Button text="Delete Student" onAction="#handleDeleteStudent" style="-fx-font-size: 14px; -fx-background-color: #FF5722; -fx-text-fill: white; -fx-border-radius: 5px;"/>
+        <Button text="Update" onAction="#handleUpdateStudent" style="-fx-font-size: 14px; -fx-background-color: #2196F3; -fx-text-fill: white; -fx-border-radius: 5px;"/>
     </HBox>
-    <TableView fx:id="studentsTable">
+
+    <TableView fx:id="studentsTable" prefWidth="600" style="-fx-font-size: 14px;" onMouseClicked="#handleTableSelection">
         <columns>
-            <TableColumn text="ID" fx:id="userIdColumn"/>
-            <TableColumn text="Username" fx:id="usernameColumn"/>
-            <TableColumn text="Class" fx:id="classColumn"/>
+            <TableColumn text="ID" fx:id="userIdColumn" prefWidth="100" style="-fx-alignment: CENTER;"/>
+            <TableColumn text="Username" fx:id="usernameColumn" prefWidth="300" style="-fx-alignment: CENTER;"/>
+            <TableColumn text="Class" fx:id="classColumn" prefWidth="200" style="-fx-alignment: CENTER;"/>
         </columns>
     </TableView>
+    
+       <Button text="Return to Menu" onAction="#returnToMenu" style="-fx-font-size: 14px; -fx-background-color: #2196F3; -fx-text-fill: white; -fx-border-radius: 5px;"/>
+    
+
 </VBox>

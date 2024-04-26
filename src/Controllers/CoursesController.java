@@ -6,12 +6,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import util.DatabaseConnector;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -107,6 +112,18 @@ public class CoursesController {
         if (selectedCourse != null) {
             newCourseNameField.setText(selectedCourse.getCourseName());
         }
+    }
+    
+    @FXML
+    public void returnToMenu(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/admin.fxml"));
+        Parent root = loader.load();
+        
+        // Get the stage from the event source
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
     private void showAlert(String message) {
