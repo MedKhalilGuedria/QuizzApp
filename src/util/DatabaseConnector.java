@@ -8,12 +8,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import Models.Choice;
 import Models.Classes;
 
 
 import Models.Course;
+import Models.Questions;
 import Models.Teacher;
 import Models.User;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class DatabaseConnector {
 	  private static final String JDBC_URL = "jdbc:mysql://localhost:3307/quizdb";
@@ -34,7 +39,7 @@ public class DatabaseConnector {
 	      
 
 
-	    private static Connection connection;
+	    public static Connection connection;
 
 	    static {
 	        try {
@@ -44,7 +49,7 @@ public class DatabaseConnector {
 	        }
 	    }
 	    
-	    private static Connection getConnection() throws SQLException {
+	    public static Connection getConnection() throws SQLException {
 	        return DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
 	    }
 
@@ -310,6 +315,131 @@ public class DatabaseConnector {
 	            statement.executeUpdate();
 	        }
 	    }
+	    
+	    
+	    public static void addQuestion(Questions question) throws SQLException {
+	        String sql = "INSERT INTO questions (question_text) VALUES (?)";
+	        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+	            stmt.setString(1, question.getQuestionText());
+	            stmt.executeUpdate();
+	        }
+	    }
+	    
+	    public static void addChoice(Choice choice, int questionId) throws SQLException {
+	        String sql = "INSERT INTO Choices (choice_text, is_correct, question_id) VALUES (?, ?, ?)";
+	        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+	            stmt.setString(1, choice.getChoiceText());
+	            stmt.setBoolean(2, choice.isCorrect());
+	            stmt.setInt(3, questionId);
+	            stmt.executeUpdate();
+	        }
+	    }
+
+	    public static List<Questions> getQuestions() throws SQLException {
+	        List<Questions> questions = new ArrayList<>();
+	        String sql = "SELECT * FROM questions";
+	        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+	            ResultSet rs = stmt.executeQuery();
+	            while (rs.next()) {
+	                int id = rs.getInt("question_id");
+                    System.out.println("testquery");
+
+	                String text = rs.getString("question_text");
+                    System.out.println("testquery");
+
+	                Questions question = new Questions(id, text);
+                    System.out.println("testquery");
+
+	                // Get choices for this question
+	                question.setChoices(getChoices(id));
+                    System.out.println("testquery");
+                    System.out.println(question.getChoices());
+
+
+                    System.out.println(question);
+                    System.out.println("testqueryfinal");
+
+	                questions.add(question);
+                    System.out.println("testqueryfinalllllllllll");
+                    System.out.println(questions);
+
+
+	            }
+	        }
+	        return questions;
+	    }
+
+	    
+	    
+	    public static ObservableList<Questions> getQuestionsQuiz() throws SQLException {
+	        ObservableList<Questions> questions = FXCollections.observableArrayList(); // Or your preferred implementation
+	        String sql = "SELECT * FROM questions";
+	        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+	            ResultSet rs = stmt.executeQuery();
+	            while (rs.next()) {
+	                int id = rs.getInt("question_id");
+	                String text = rs.getString("question_text");
+	                Questions question = new Questions(id, text);
+
+	                // Get choices for this question
+	                question.setChoices(getChoices(id));
+
+	                questions.add(question); // Add to the observable list
+	            }
+	        }
+	        return questions;
+	    }
+	    public static List<Choice> getChoices(int questionId) throws SQLException {
+	    	System.out.println("test");
+	        List<Choice> choices = new ArrayList<>();
+	        String sql = "SELECT * FROM Choices WHERE question_id = ?";
+	        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+	            stmt.setInt(1, questionId);
+	            ResultSet rs = stmt.executeQuery();
+	            while (rs.next()) {
+	                int choiceId = rs.getInt("choice_id");
+	                String choiceText = rs.getString("choice_text");
+	                boolean isCorrect = rs.getBoolean("is_correct");
+	                Choice choice = new Choice(choiceId, choiceText, isCorrect);
+	                choices.add(choice);
+	            }
+	        }
+	        return choices;
+	    }
+	    
+	    
+	    
+	    public static int createQuiz(String quizName) throws SQLException {
+	        String query = "INSERT INTO Quizzes (quiz_name) VALUES (?)"; // Replace with actual columns
+
+	        try (PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+	            statement.setString(1, quizName);
+	            // ... (set other quiz attributes)
+	            int rowsAffected = statement.executeUpdate();
+
+	            if (rowsAffected > 0) {
+	                ResultSet generatedKeys = statement.getGeneratedKeys();
+	                if (generatedKeys.next()) {
+	                    return generatedKeys.getInt(1);
+	                }
+	            }
+	        }
+
+	        return 0; // Return 0 on error
+	    }
+	    
+	    
+
+	    public static void addQuestionToQuiz(int quizId, int questionId) throws SQLException {
+	        String query = "INSERT INTO Quiz_Questions (quiz_id, question_id) VALUES (?, ?)";
+
+	        try (PreparedStatement statement = connection.prepareStatement(query)) {
+	            statement.setInt(1, quizId);
+	            statement.setInt(2, questionId);
+	            statement.executeUpdate();
+	        }
+	    }
+
 
 
 

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CreateQuizController" stylesheets="@styles.css">
+    <Label text="Create Quiz" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333333;" />
+    <Label text="Quiz Name:" style="-fx-font-size: 14px; -fx-text-fill: #666666;" />
+    <TextField fx:id="quizNameTextField" style="-fx-pref-width: 200px; -fx-font-size: 14px;" />
+    <Label text="Available Questions:" style="-fx-font-size: 14px; -fx-text-fill: #666666;" />
+    <ListView fx:id="availableQuestionsList" prefHeight="200.0" style="-fx-pref-width: 300px;" />
+    <HBox style="-fx-spacing: 10px;">  
+        <Label text="Selected Questions:" style="-fx-font-size: 14px; -fx-text-fill: #666666;" />
+        <Button text="Add" onAction="#addSelectedQuestions" style="-fx-font-size: 14px; -fx-pref-width: 80px;" />
+        <Button text="Remove" onAction="#removeSelectedQuestions" style="-fx-font-size: 14px; -fx-pref-width: 80px;" />
+    </HBox>
+    <ListView fx:id="selectedQuestionsList" prefHeight="200.0" style="-fx-pref-width: 300px;" />
+    <Button text="Create Quiz" onAction="#createQuiz" style="-fx-font-size: 16px; -fx-pref-width: 150px; -fx-background-color: #4CAF50; -fx-text-fill: white;" />
+     <Button text="Return to Menu" onAction="#returnToMenu" style="-fx-font-size: 14px; -fx-background-color: #2196F3; -fx-text-fill: white; -fx-border-radius: 5px;"/>
+    
+</VBox>

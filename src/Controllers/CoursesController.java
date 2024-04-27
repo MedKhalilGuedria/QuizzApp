@@ -13,6 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import util.DatabaseConnector;
 
@@ -60,7 +61,12 @@ public class CoursesController {
         if (!newCourseName.isEmpty()) {
             try {
                 DatabaseConnector.createCourse(newCourseName);
-                loadData(); // Reload data after adding a new course
+                loadData();
+            	Alert successAlert = new Alert(AlertType.INFORMATION);
+                successAlert.setTitle("Course Creation");
+                successAlert.setHeaderText(null);
+                successAlert.setContentText("Course created successfully!");
+                successAlert.showAndWait();// Reload data after adding a new course
                 newCourseNameField.clear();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -93,7 +99,12 @@ public class CoursesController {
             if (!newCourseName.isEmpty()) {
                 try {
                     DatabaseConnector.updateCourse(selectedCourse.getCourseId(), newCourseName);
-                    loadData(); // Reload data after updating a course
+                    loadData();
+                	Alert successAlert = new Alert(AlertType.INFORMATION);
+                    successAlert.setTitle("Course Update");
+                    successAlert.setHeaderText(null);
+                    successAlert.setContentText("Course updated successfully!");
+                    successAlert.showAndWait();// Reload data after updating a course
                     newCourseNameField.clear();
                 } catch (SQLException e) {
                     e.printStackTrace();

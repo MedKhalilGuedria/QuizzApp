@@ -42,7 +42,7 @@ public class LoginController {
 	                        redirectToAdminInterface();
 	                        break;
 	                    case "Teacher":
-	                        // Redirect to teacher interface
+	                    	redirectToTeacherInterface();
 	                        break;
 	                    case "Student":
 	                        // Redirect to student interface
@@ -69,6 +69,19 @@ public class LoginController {
 	            System.err.println("Error loading Admin interface: " + e.getMessage());
 	        }
 	    }
+	    
+	    private void redirectToTeacherInterface() {
+	        try {
+	            Stage stage = (Stage) usernameField.getScene().getWindow();
+	            Parent root = FXMLLoader.load(getClass().getResource("/Views/TeacherWelcome.fxml"));
+	            Scene scene = new Scene(root);
+	            stage.setScene(scene);
+	            stage.setTitle("Teacher Interface");
+	        } catch (IOException e) {
+	            System.err.println("Error loading Admin interface: " + e.getMessage());
+	        }
+	    }
+
 
 	    @FXML
 	    private void handleRegisterButtonAction(ActionEvent event) {

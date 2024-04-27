@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="Controllers.TeacherWelcomeController"
+      alignment="CENTER"
+      spacing="20"
+      style="-fx-background-color: #f0f0f0; -fx-padding: 30;">
+
+    <Label text="Teacher Menu" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <Button text="Quiz Managament" onAction="#handleQuizManagement"
+            style="-fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-color: #2196F3; -fx-text-fill: white; -fx-border-radius: 5px;"/>
+    
+    <Button text="Questions Management" onAction="#handleQuestionsManagement"
+            style="-fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-color: #4CAF50; -fx-text-fill: white; -fx-border-radius: 5px;"/>
+    
+    
+</VBox>

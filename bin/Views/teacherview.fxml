@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import Controllers.TeacherViewController?>
+
+<VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.TeacherViewController" styleClass="container"
+    style="
+        -fx-background-color: #f0f0f0;
+        -fx-padding: 20px;
+    ">
+
+    <VBox spacing="10" style="
+        -fx-background-color: #ffffff;
+        -fx-padding: 15px;
+        -fx-border-radius: 5px;
+        -fx-border-color: #cccccc;
+    ">
+        <Label text="Gestion des Questions" style="
+            -fx-font-size: 18px;
+            -fx-font-weight: bold;
+        "/>
+        <HBox spacing="10">
+            <TextField fx:id="questionTextField" promptText="Question"/>
+            <Button text="Ajouter Question" onAction="#addQuestion" style="
+                -fx-background-color: #4caf50;
+                -fx-text-fill: #ffffff;
+                -fx-font-weight: bold;
+                -fx-padding: 8px 15px;
+                -fx-border-radius: 5px;
+            "/>
+        </HBox>
+
+        <TableView fx:id="questionsTable" style="
+            -fx-pref-height: 200px;
+        ">
+            <columns>
+                <TableColumn text="ID" fx:id="questionIdColumn"/>
+                <TableColumn text="Question" fx:id="questionTextColumn"/>
+            </columns>
+        </TableView>
+
+        <HBox spacing="10">
+            <TextField fx:id="choiceTextField" promptText="Choix"/>
+            <CheckBox fx:id="correctCheckBox" text="Correct?"/>
+            <Button text="Ajouter Choix" onAction="#addChoice" style="
+                -fx-background-color: #4caf50;
+                -fx-text-fill: #ffffff;
+                -fx-font-weight: bold;
+                -fx-padding: 8px 15px;
+                -fx-border-radius: 5px;
+            "/>
+        </HBox>
+    </VBox>
+    
+    
+    <Button text="Show Choices" fx:id="showChoicesButton" onAction="#showChoices"/>
+     <Button text="Return to Menu" onAction="#returnToMenu" style="-fx-font-size: 14px; -fx-background-color: #2196F3; -fx-text-fill: white; -fx-border-radius: 5px;"/>
+    
+    
+    
+    
+
+    </VBox>

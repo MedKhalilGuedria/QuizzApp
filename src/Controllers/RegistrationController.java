@@ -8,10 +8,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import util.DatabaseConnector;
 
@@ -48,7 +50,12 @@ public class RegistrationController {
         try {
             if (DatabaseConnector.registerUser(username, password, role)) {
                 System.out.println("User registered successfully.");
-                // TODO: Redirect to login view
+                
+            	Alert successAlert = new Alert(AlertType.INFORMATION);
+                successAlert.setTitle("Register ");
+                successAlert.setHeaderText(null);
+                successAlert.setContentText("Registered successfully!");
+                successAlert.showAndWait();
             } else {
                 System.out.println("Failed to register user.");
             }
