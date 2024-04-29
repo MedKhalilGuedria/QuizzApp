@@ -45,8 +45,8 @@ public class LoginController {
 	                    	redirectToTeacherInterface();
 	                        break;
 	                    case "Student":
-	                        // Redirect to student interface
-	                        break;
+	                    	redirectToStudentInterface();	                        
+	                    	break;
 	                    default:
 	                        System.out.println("Unknown user role.");
 	                }
@@ -78,7 +78,21 @@ public class LoginController {
 	            stage.setScene(scene);
 	            stage.setTitle("Teacher Interface");
 	        } catch (IOException e) {
-	            System.err.println("Error loading Admin interface: " + e.getMessage());
+	            System.err.println("Error loading Student interface: " + e.getMessage());
+	        }
+	    }
+	    
+	    
+	    
+	    private void redirectToStudentInterface() {
+	        try {
+	            Stage stage = (Stage) usernameField.getScene().getWindow();
+	            Parent root = FXMLLoader.load(getClass().getResource("/Views/StudentWelcome.fxml"));
+	            Scene scene = new Scene(root);
+	            stage.setScene(scene);
+	            stage.setTitle("Student Interface");
+	        } catch (IOException e) {
+	            System.err.println("Error loading Student interface: " + e.getMessage());
 	        }
 	    }
 

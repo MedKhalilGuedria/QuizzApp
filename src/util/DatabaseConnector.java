@@ -439,6 +439,25 @@ public class DatabaseConnector {
 	            statement.executeUpdate();
 	        }
 	    }
+	    
+	    
+	    public List<String> getQuizzesDisponibles() throws SQLException {
+	        List<String> quizzes = new ArrayList<>();
+	        
+	        String query = "SELECT quiz_name FROM Quizzes";
+	        try (Statement statement = connection.createStatement();
+	             ResultSet resultSet = statement.executeQuery(query)) {
+	            while (resultSet.next()) {
+	                String quizName = resultSet.getString("quiz_name");
+	                quizzes.add(quizName);
+	            }
+	        }
+	        
+	        return quizzes;
+	    }
+	    
+	    
+	    
 
 
 
