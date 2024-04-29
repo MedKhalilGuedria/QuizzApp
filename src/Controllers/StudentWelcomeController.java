@@ -1,5 +1,6 @@
 package Controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -34,7 +35,6 @@ public class StudentWelcomeController {
             quizListView.getItems().addAll(quizzes);
         } catch (SQLException e) {
             e.printStackTrace();
-            // Gérer l'erreur de connexion à la base de données
         }
     }
     
@@ -56,11 +56,23 @@ public class StudentWelcomeController {
                 stage.show();
             } catch (IOException e) {
                 e.printStackTrace();
-                // Gérer l'erreur lors du chargement de la fenêtre du quiz
             }
         } else {
             resultLabel.setText("Veuillez sélectionner un quiz.");
         }
+    }
+    
+    
+    @FXML
+    private void handleBackToLoginButtonAction(ActionEvent event) throws IOException {
+    	 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/Login.fxml"));
+         Parent root = loader.load();
+         
+         // Get the stage from the event source
+         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+         
+         stage.setScene(new Scene(root));
+         stage.show();
     }
 
 }

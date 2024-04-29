@@ -82,7 +82,12 @@ public class CoursesController {
         if (selectedCourse != null) {
             try {
                 DatabaseConnector.deleteCourse(selectedCourse.getCourseId());
-                loadData(); // Reload data after deleting a course
+                loadData(); 
+                Alert successAlert = new Alert(AlertType.INFORMATION);
+                successAlert.setTitle("Info ");
+                successAlert.setHeaderText(null);
+                successAlert.setContentText("Deleted successfully!");
+                successAlert.showAndWait();// Reload data after deleting a course
             } catch (SQLException e) {
                 e.printStackTrace();
             }

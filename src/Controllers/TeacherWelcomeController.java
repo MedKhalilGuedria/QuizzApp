@@ -44,5 +44,17 @@ public class TeacherWelcomeController {
               e.printStackTrace();
           }
     }
+    
+    @FXML
+    private void handleBackToLoginButtonAction(ActionEvent event) throws IOException {
+    	 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/Login.fxml"));
+         Parent root = loader.load();
+         
+         // Get the stage from the event source
+         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+         
+         stage.setScene(new Scene(root));
+         stage.show();
+    }
 
 }

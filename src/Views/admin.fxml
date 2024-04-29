@@ -23,4 +23,6 @@
     
     <Button text="Class Management" onAction="#handleClassManagement"
             style="-fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-color: #9C27B0; -fx-text-fill: white; -fx-border-radius: 5px;"/>
+    <Button text="Log Out" onAction="#handleBackToLoginButtonAction" style="-fx-font-size: 14px; -fx-padding: 8px 20px; -fx-background-color: #2196F3; -fx-text-fill: white; -fx-border-radius: 5px;"/>
+            
 </VBox>

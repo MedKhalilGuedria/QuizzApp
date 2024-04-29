@@ -13,6 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import util.DatabaseConnector;
 
@@ -62,6 +63,11 @@ public class ClassesController {
                 DatabaseConnector.createClass(newClassName);
                 loadData(); // Reload data after adding a new class
                 newClassNameField.clear();
+                Alert successAlert = new Alert(AlertType.INFORMATION);
+                successAlert.setTitle("Info ");
+                successAlert.setHeaderText(null);
+                successAlert.setContentText("Added successfully!");
+                successAlert.showAndWait();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -76,7 +82,12 @@ public class ClassesController {
         if (selectedClass != null) {
             try {
                 DatabaseConnector.deleteClass(selectedClass.getClassId());
-                loadData(); // Reload data after deleting a class
+                loadData();
+                Alert successAlert = new Alert(AlertType.INFORMATION);
+                successAlert.setTitle("Info ");
+                successAlert.setHeaderText(null);
+                successAlert.setContentText("Deleted successfully!");
+                successAlert.showAndWait();// Reload data after deleting a class
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -95,6 +106,11 @@ public class ClassesController {
                     DatabaseConnector.updateClass(selectedClass.getClassId(), newClassName);
                     loadData(); // Reload data after updating a class
                     newClassNameField.clear();
+                    Alert successAlert = new Alert(AlertType.INFORMATION);
+                    successAlert.setTitle("Info ");
+                    successAlert.setHeaderText(null);
+                    successAlert.setContentText("Updated successfully!");
+                    successAlert.showAndWait();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

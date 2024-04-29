@@ -8,10 +8,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import util.DatabaseConnector;
 
@@ -132,6 +134,7 @@ public class CreateQuizController {
             for (Questions question : selectedQuestions) {
                 try {
                     DatabaseConnector.addQuestionToQuiz(quizId, question.getQuestionId());
+                    
                 } catch (SQLException e) {
                     e.printStackTrace();
                     System.err.println("Error adding question " + question.getQuestionId() + " to quiz.");
@@ -142,6 +145,11 @@ public class CreateQuizController {
 
             if (allQuestionsAdded) {
                 System.out.println("Quiz created successfully!");
+                Alert successAlert = new Alert(AlertType.INFORMATION);
+                successAlert.setTitle("Info");
+                successAlert.setHeaderText(null);
+                successAlert.setContentText("Quiz created successfully!");
+                successAlert.showAndWait();// Reload data after adding a new course
                 // Clear UI or handle success state (e.g., display confirmation message)
             } else {
                 System.err.println("Some questions may not have been added to the quiz.");

@@ -18,8 +18,7 @@ public class AdminController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/Courses.fxml"));
             Parent root = loader.load();
             CoursesController controller = loader.getController();
-            // If you need to pass any data to the CourseManagementController, you can do so here
-            // For example: controller.setData(data);
+        
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("Course Management");
@@ -35,8 +34,7 @@ public class AdminController {
               FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/students.fxml"));
               Parent root = loader.load();
               StudentsController controller = loader.getController();
-              // If you need to pass any data to the CourseManagementController, you can do so here
-              // For example: controller.setData(data);
+              
               Stage stage = new Stage();
               stage.setScene(new Scene(root));
               stage.setTitle("Student Management");
@@ -85,5 +83,18 @@ public class AdminController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+    
+    
+    @FXML
+    private void handleBackToLoginButtonAction(ActionEvent event) throws IOException {
+    	 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/Login.fxml"));
+         Parent root = loader.load();
+         
+         // Get the stage from the event source
+         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+         
+         stage.setScene(new Scene(root));
+         stage.show();
     }
 }

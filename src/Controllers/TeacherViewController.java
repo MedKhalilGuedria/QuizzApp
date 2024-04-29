@@ -18,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -25,6 +26,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import util.DatabaseConnector;
@@ -160,6 +162,12 @@ public class TeacherViewController {
 
 	        choiceTextField.clear();
 	        correctCheckBox.setSelected(false);
+	        
+	        Alert successAlert = new Alert(AlertType.INFORMATION);
+            successAlert.setTitle("Info");
+            successAlert.setHeaderText(null);
+            successAlert.setContentText("Choice created successfully!");
+            successAlert.showAndWait();
 	    }
 
 	    @FXML
@@ -173,8 +181,14 @@ public class TeacherViewController {
 	        Questions question = new Questions(questionText);
             DatabaseConnector.addQuestion(question);
 	        questions.add(question);
+	        getQuestions();
 
 	        questionTextField.clear();
+	        Alert successAlert = new Alert(AlertType.INFORMATION);
+            successAlert.setTitle("Info");
+            successAlert.setHeaderText(null);
+            successAlert.setContentText("Question created successfully!");
+            successAlert.showAndWait();
 	    }
 	    
 	    

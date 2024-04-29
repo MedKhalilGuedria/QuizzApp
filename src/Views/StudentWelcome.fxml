@@ -13,4 +13,7 @@
     
     <Label fx:id="resultLabel" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-margin-top: 10px;" />
     
+    <Button text="Log Out" onAction="#handleBackToLoginButtonAction" style="-fx-font-size: 14px; -fx-padding: 8px 20px; -fx-background-color: #2196F3; -fx-text-fill: white; -fx-border-radius: 5px;"/>
+    
+    
 </VBox>
